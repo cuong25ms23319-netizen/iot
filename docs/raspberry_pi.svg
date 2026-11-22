@@ -1,0 +1,143 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1320 860" width="1320" height="860" font-family="Arial, Helvetica, sans-serif">
+<rect width="1320" height="860" fill="#fff"/>
+<text x="40" y="44" font-size="23" text-anchor="start" fill="#111" font-weight="700">SMART GREENHOUSE – Phần Raspberry Pi 3B+ (Gateway)</text>
+<text x="40" y="68" font-size="13" text-anchor="start" fill="#444">Pi chỉ nối dây với LED 4 số. Arduino nối bằng cáp USB (Serial dự phòng) và Bluetooth không dây (kênh chính).</text>
+<rect x="380" y="300" width="540" height="340" rx="16" fill="#2e9e4f" stroke="#1b6b33" stroke-width="3"/>
+<circle cx="400" cy="620" r="8" fill="#f3d36b" stroke="#8a6d1a"/>
+<circle cx="790" cy="620" r="8" fill="#f3d36b" stroke="#8a6d1a"/>
+<rect x="550" y="430" width="90" height="90" rx="4" fill="#c9cdd2" stroke="#666" stroke-width="2"/>
+<text x="595" y="480" font-size="13" text-anchor="middle" fill="#222" font-weight="700">SoC</text>
+<rect x="420" y="395" width="70" height="46" rx="4" fill="#d9dde2" stroke="#666"/>
+<text x="455" y="414" font-size="11" text-anchor="middle" fill="#222" font-weight="700">WiFi +</text>
+<text x="455" y="429" font-size="11" text-anchor="middle" fill="#222" font-weight="700">Bluetooth</text>
+<rect x="830" y="350" width="110" height="70" rx="4" fill="#d5d8dc" stroke="#666" stroke-width="2"/>
+<text x="885" y="390" font-size="12" text-anchor="middle" fill="#222" font-weight="700">2 × USB</text>
+<rect x="830" y="440" width="110" height="70" rx="4" fill="#d5d8dc" stroke="#666" stroke-width="2"/>
+<text x="885" y="480" font-size="12" text-anchor="middle" fill="#222" font-weight="700">2 × USB</text>
+<rect x="830" y="535" width="110" height="80" rx="4" fill="#bfc4ca" stroke="#666" stroke-width="2"/>
+<text x="885" y="580" font-size="12" text-anchor="middle" fill="#222" font-weight="700">Ethernet</text>
+<rect x="430" y="618" width="50" height="30" rx="3" fill="#c9cdd2" stroke="#666"/>
+<text x="455" y="672" font-size="12" text-anchor="middle" fill="#222" font-weight="700">micro-USB: nguồn 5V 2.5A</text>
+<rect x="530" y="612" width="90" height="36" rx="3" fill="#c9cdd2" stroke="#666"/>
+<text x="575" y="635" font-size="11" text-anchor="middle" fill="#222">HDMI</text>
+<rect x="366" y="440" width="50" height="70" rx="3" fill="#333"/>
+<text x="390" y="528" font-size="11" text-anchor="middle" fill="#fff">thẻ microSD</text>
+<text x="595" y="562" font-size="26" text-anchor="middle" fill="#fff" font-weight="700">RASPBERRY PI 3B+</text>
+<text x="595" y="586" font-size="13" text-anchor="middle" fill="#e3f7e8">Flask + SQLite + Bluetooth</text>
+<rect x="419" y="310" width="364" height="40" rx="3" fill="#1c1c1c"/>
+<circle cx="430" cy="339" r="5" fill="#e02020" stroke="#fff" stroke-width="2"/>
+<circle cx="430" cy="321" r="5" fill="#c9a227" stroke="#6b5510" stroke-width="1"/>
+<circle cx="448" cy="339" r="5" fill="#c9a227" stroke="#6b5510" stroke-width="1"/>
+<circle cx="448" cy="321" r="5" fill="#c9a227" stroke="#6b5510" stroke-width="1"/>
+<circle cx="466" cy="339" r="5" fill="#c9a227" stroke="#6b5510" stroke-width="1"/>
+<circle cx="466" cy="321" r="5" fill="#1a1a1a" stroke="#fff" stroke-width="2"/>
+<circle cx="484" cy="339" r="5" fill="#c9a227" stroke="#6b5510" stroke-width="1"/>
+<circle cx="484" cy="321" r="5" fill="#c9a227" stroke="#6b5510" stroke-width="1"/>
+<circle cx="502" cy="339" r="5" fill="#c9a227" stroke="#6b5510" stroke-width="1"/>
+<circle cx="502" cy="321" r="5" fill="#c9a227" stroke="#6b5510" stroke-width="1"/>
+<circle cx="520" cy="339" r="5" fill="#c9a227" stroke="#6b5510" stroke-width="1"/>
+<circle cx="520" cy="321" r="5" fill="#c9a227" stroke="#6b5510" stroke-width="1"/>
+<circle cx="538" cy="339" r="5" fill="#c9a227" stroke="#6b5510" stroke-width="1"/>
+<circle cx="538" cy="321" r="5" fill="#c9a227" stroke="#6b5510" stroke-width="1"/>
+<circle cx="556" cy="339" r="5" fill="#c9a227" stroke="#6b5510" stroke-width="1"/>
+<circle cx="556" cy="321" r="5" fill="#2f6bff" stroke="#fff" stroke-width="2"/>
+<circle cx="574" cy="339" r="5" fill="#c9a227" stroke="#6b5510" stroke-width="1"/>
+<circle cx="574" cy="321" r="5" fill="#1f9d48" stroke="#fff" stroke-width="2"/>
+<circle cx="592" cy="339" r="5" fill="#c9a227" stroke="#6b5510" stroke-width="1"/>
+<circle cx="592" cy="321" r="5" fill="#c9a227" stroke="#6b5510" stroke-width="1"/>
+<circle cx="610" cy="339" r="5" fill="#c9a227" stroke="#6b5510" stroke-width="1"/>
+<circle cx="610" cy="321" r="5" fill="#c9a227" stroke="#6b5510" stroke-width="1"/>
+<circle cx="628" cy="339" r="5" fill="#c9a227" stroke="#6b5510" stroke-width="1"/>
+<circle cx="628" cy="321" r="5" fill="#c9a227" stroke="#6b5510" stroke-width="1"/>
+<circle cx="646" cy="339" r="5" fill="#c9a227" stroke="#6b5510" stroke-width="1"/>
+<circle cx="646" cy="321" r="5" fill="#c9a227" stroke="#6b5510" stroke-width="1"/>
+<circle cx="664" cy="339" r="5" fill="#c9a227" stroke="#6b5510" stroke-width="1"/>
+<circle cx="664" cy="321" r="5" fill="#c9a227" stroke="#6b5510" stroke-width="1"/>
+<circle cx="682" cy="339" r="5" fill="#c9a227" stroke="#6b5510" stroke-width="1"/>
+<circle cx="682" cy="321" r="5" fill="#c9a227" stroke="#6b5510" stroke-width="1"/>
+<circle cx="700" cy="339" r="5" fill="#c9a227" stroke="#6b5510" stroke-width="1"/>
+<circle cx="700" cy="321" r="5" fill="#c9a227" stroke="#6b5510" stroke-width="1"/>
+<circle cx="718" cy="339" r="5" fill="#c9a227" stroke="#6b5510" stroke-width="1"/>
+<circle cx="718" cy="321" r="5" fill="#c9a227" stroke="#6b5510" stroke-width="1"/>
+<circle cx="736" cy="339" r="5" fill="#c9a227" stroke="#6b5510" stroke-width="1"/>
+<circle cx="736" cy="321" r="5" fill="#c9a227" stroke="#6b5510" stroke-width="1"/>
+<circle cx="754" cy="339" r="5" fill="#c9a227" stroke="#6b5510" stroke-width="1"/>
+<circle cx="754" cy="321" r="5" fill="#c9a227" stroke="#6b5510" stroke-width="1"/>
+<circle cx="772" cy="339" r="5" fill="#c9a227" stroke="#6b5510" stroke-width="1"/>
+<circle cx="772" cy="321" r="5" fill="#c9a227" stroke="#6b5510" stroke-width="1"/>
+<text x="412" y="325" font-size="10" text-anchor="end" fill="#fff" font-weight="700">2</text>
+<text x="412" y="343" font-size="10" text-anchor="end" fill="#fff" font-weight="700">1</text>
+<text x="790" y="325" font-size="10" text-anchor="start" fill="#fff" font-weight="700">40</text>
+<text x="790" y="343" font-size="10" text-anchor="start" fill="#fff" font-weight="700">39</text>
+<text x="601.0" y="370" font-size="11" text-anchor="middle" fill="#fff" font-weight="700">GPIO 40 chân · hàng trong: lẻ 1–39 · hàng ngoài: chẵn 2–40</text>
+<rect x="420" y="96" width="300" height="120" rx="6" fill="#1b3f8f" stroke="#0e2558" stroke-width="2"/>
+<rect x="438" y="108" width="264" height="70" rx="4" fill="#0d0d0d" stroke="#444" stroke-width="2"/>
+<text x="570" y="162" font-size="50" text-anchor="middle" fill="#ff3b30" font-weight="700">29 °C</text>
+<text x="570" y="86" font-size="14" text-anchor="middle" fill="#222" font-weight="700">LED 7 đoạn 4 số (module TM1637)</text>
+<rect x="512" y="208" width="8" height="14" fill="#bbb"/>
+<text x="516" y="200" font-size="10.5" text-anchor="middle" fill="#fff" font-weight="700">CLK</text>
+<rect x="548" y="208" width="8" height="14" fill="#bbb"/>
+<text x="552" y="200" font-size="10.5" text-anchor="middle" fill="#fff" font-weight="700">DIO</text>
+<rect x="584" y="208" width="8" height="14" fill="#bbb"/>
+<text x="588" y="200" font-size="10.5" text-anchor="middle" fill="#fff" font-weight="700">VCC</text>
+<rect x="620" y="208" width="8" height="14" fill="#bbb"/>
+<text x="624" y="200" font-size="10.5" text-anchor="middle" fill="#fff" font-weight="700">GND</text>
+<polyline points="516,222 516,250 556,321" fill="none" stroke="#00000030" stroke-width="7.0" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="516,222 516,250 556,321" fill="none" stroke="#2f6bff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="516" cy="222" r="3.4" fill="#eee" stroke="#333" stroke-width="1"/>
+<circle cx="556" cy="321" r="3.4" fill="#eee" stroke="#333" stroke-width="1"/>
+<polyline points="552,222 552,240 598,240 598,280 574,321" fill="none" stroke="#00000030" stroke-width="7.0" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="552,222 552,240 598,240 598,280 574,321" fill="none" stroke="#1f9d48" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="552" cy="222" r="3.4" fill="#eee" stroke="#333" stroke-width="1"/>
+<circle cx="574" cy="321" r="3.4" fill="#eee" stroke="#333" stroke-width="1"/>
+<polyline points="588,222 588,262 396,262 396,360 430,360 430,339" fill="none" stroke="#00000030" stroke-width="7.0" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="588,222 588,262 396,262 396,360 430,360 430,339" fill="none" stroke="#e02020" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="588" cy="222" r="3.4" fill="#eee" stroke="#333" stroke-width="1"/>
+<circle cx="430" cy="339" r="3.4" fill="#eee" stroke="#333" stroke-width="1"/>
+<polyline points="624,222 624,274 466,274 466,321" fill="none" stroke="#00000030" stroke-width="7.0" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="624,222 624,274 466,274 466,321" fill="none" stroke="#1a1a1a" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="624" cy="222" r="3.4" fill="#eee" stroke="#333" stroke-width="1"/>
+<circle cx="466" cy="321" r="3.4" fill="#eee" stroke="#333" stroke-width="1"/>
+<rect x="40" y="96" width="300" height="176" rx="10" fill="#f7f8fa" stroke="#c9ced6"/>
+<text x="58" y="122" font-size="14" text-anchor="start" fill="#222" font-weight="700">Nối LED 4 số ↔ Pi</text>
+<rect x="58" y="138" width="22" height="8" rx="3" fill="#2f6bff"/>
+<text x="90" y="147" font-size="13" text-anchor="start" fill="#222">CLK → GPIO23 (chân 16)</text>
+<rect x="58" y="162" width="22" height="8" rx="3" fill="#1f9d48"/>
+<text x="90" y="171" font-size="13" text-anchor="start" fill="#222">DIO → GPIO24 (chân 18)</text>
+<rect x="58" y="186" width="22" height="8" rx="3" fill="#e02020"/>
+<text x="90" y="195" font-size="13" text-anchor="start" fill="#222">VCC → 3.3V (chân 1)</text>
+<rect x="58" y="210" width="22" height="8" rx="3" fill="#1a1a1a"/>
+<text x="90" y="219" font-size="13" text-anchor="start" fill="#222">GND → GND (chân 6)</text>
+<text x="58" y="250" font-size="12" text-anchor="start" fill="#444">Cấp 3.3V, không dùng 5V (an toàn cho GPIO).</text>
+<rect x="1040" y="430" width="240" height="150" rx="12" fill="#0e8a94" stroke="#075c63" stroke-width="3"/>
+<rect x="1018" y="480" width="50" height="46" rx="4" fill="#c9c9c9" stroke="#777"/>
+<text x="1175" y="500" font-size="19" text-anchor="middle" fill="#fff" font-weight="700">ARDUINO UNO</text>
+<text x="1175" y="524" font-size="12" text-anchor="middle" fill="#d9f3f5">(mạch cảm biến ở</text>
+<text x="1175" y="540" font-size="12" text-anchor="middle" fill="#d9f3f5">sơ đồ breadboard)</text>
+<polyline points="940,475 980,475 980,503 1018,503" fill="none" stroke="#00000030" stroke-width="10.5" stroke-linecap="round" stroke-linejoin="round"/>
+<polyline points="940,475 980,475 980,503 1018,503" fill="none" stroke="#111" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="940" cy="475" r="3.4" fill="#eee" stroke="#333" stroke-width="1"/>
+<circle cx="1018" cy="503" r="3.4" fill="#eee" stroke="#333" stroke-width="1"/>
+<text x="982" y="450" font-size="13" text-anchor="middle" fill="#222" font-weight="700">Cáp USB</text>
+<text x="1160" y="606" font-size="12.5" text-anchor="middle" fill="#222" font-weight="700">Serial dự phòng (/dev/ttyACM0)</text>
+<text x="1160" y="624" font-size="12.5" text-anchor="middle" fill="#222">+ cấp nguồn cho Arduino</text>
+<rect x="1080" y="150" width="160" height="110" rx="6" fill="#1b3f8f" stroke="#0e2558" stroke-width="2"/><rect x="1110" y="164" width="100" height="52" rx="3" fill="#c9cdd2" stroke="#666"/>
+<text x="1160" y="196" font-size="14" text-anchor="middle" fill="#222" font-weight="700">HC-05</text>
+<text x="1160" y="242" font-size="11.5" text-anchor="middle" fill="#fff">cắm trên mạch Arduino</text>
+<polyline points="870,300 870,210 1080,210" fill="none" stroke="#2f6bff" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="9 7"/>
+<text x="972" y="194" font-size="13" text-anchor="middle" fill="#1c4fd6" font-weight="700">Bluetooth (kênh chính)</text>
+<polyline points="1160,260 1160,430" fill="none" stroke="#888" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 5"/>
+<rect x="60" y="430" width="230" height="150" rx="10" fill="#f1f3f5" stroke="#868e96" stroke-width="2"/><rect x="74" y="444" width="202" height="100" rx="4" fill="#fff" stroke="#adb5bd"/>
+<text x="175" y="470" font-size="13" text-anchor="middle" fill="#222" font-weight="700">Dashboard Flask</text>
+<polyline points="90,525 120,505 150,515 180,490 210,500 250,480" fill="none" stroke="#2a78d6" stroke-width="3"/>
+<text x="175" y="566" font-size="12.5" text-anchor="middle" fill="#222" font-weight="700">Laptop / điện thoại</text>
+<polyline points="290,470 380,410" fill="none" stroke="#12b886" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="9 7"/>
+<text x="175" y="604" font-size="12.5" text-anchor="middle" fill="#222">Trình duyệt mở http://&lt;IP của Pi&gt;:5000</text>
+<text x="175" y="622" font-size="12" text-anchor="middle" fill="#222">(cùng mạng WiFi với Pi)</text>
+<text x="335" y="440" font-size="13" text-anchor="middle" fill="#0b8a63" font-weight="700">WiFi</text>
+<rect x="40" y="700" width="1240" height="130" rx="10" fill="#f7f8fa" stroke="#c9ced6"/>
+<text x="58" y="726" font-size="14" text-anchor="start" fill="#222" font-weight="700">Ghi chú</text>
+<text x="58" y="752" font-size="12.5" text-anchor="start" fill="#222">• Bluetooth dùng chip có sẵn trên Pi 3B+, không cần nối dây: ghép đôi một lần với HC-05 (PIN mặc định 1234 hoặc 0000).</text>
+<text x="58" y="778" font-size="12.5" text-anchor="start" fill="#222">• Serial dự phòng dùng cáp USB nên không cần mạch hạ áp. Nếu thầy cô yêu cầu UART qua GPIO14/15 thì phải thêm cầu chia áp 1kΩ + 2kΩ ở đường TX Arduino → RX Pi.</text>
+<text x="58" y="804" font-size="12.5" text-anchor="start" fill="#222">• Tinkercad không có Raspberry Pi và LED 4 số, nên phần này chỉ lắp trên mạch thật.</text>
+</svg>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Smart Greenhouse · Dashboard</title>
+  <script>
+    // Đặt giao diện sáng/tối trước khi vẽ trang để không bị nháy
+    (function () {
+      var t = null;
+      try { t = localStorage.getItem('theme'); } catch (e) {}
+      if (!t) t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      document.documentElement.dataset.theme = t;
+    })();
+  </script>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<!-- Bộ icon dùng chung -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-leaf" viewBox="0 0 24 24"><path d="M5 19c0-8 5-13 14-14 0 9-4 14-12 14"/><path d="M5 19c3-5 6-8 10-10"/></symbol>
+    <symbol id="i-temp" viewBox="0 0 24 24"><path d="M10 4a2 2 0 1 1 4 0v9.5a4 4 0 1 1-4 0z"/><path d="M12 9v7"/></symbol>
+    <symbol id="i-drop" viewBox="0 0 24 24"><path d="M12 3s6 6.2 6 10.5a6 6 0 0 1-12 0C6 9.2 12 3 12 3z"/></symbol>
+    <symbol id="i-soil" viewBox="0 0 24 24"><path d="M12 21v-8"/><path d="M12 13c0-3-2-5-6-5 0 3 2 5 6 5z"/><path d="M12 11c0-3 2-6 6-6 0 3-2 6-6 6z"/><path d="M4 21h16"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+    <symbol id="i-tank" viewBox="0 0 24 24"><path d="M5 4h14v16H5z"/><path d="M5 12c2-1.5 3.5-1.5 5 0s3 1.5 4.5 0 3-1.5 4.5 0"/></symbol>
+    <symbol id="i-vent" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M8 9h8M8 12h8M8 15h8"/></symbol>
+    <symbol id="i-bulb" viewBox="0 0 24 24"><path d="M9 18h6M10 21h4"/><path d="M12 3a6 6 0 0 0-4 10.5c.7.7 1 1.5 1 2.5h6c0-1 .3-1.8 1-2.5A6 6 0 0 0 12 3z"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></symbol>
+    <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 4v11M7 11l5 5 5-5M5 20h14"/></symbol>
+    <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 16V11a6 6 0 0 1 12 0v5l2 2H4z"/><path d="M10 21h4"/></symbol>
+    <symbol id="i-vol" viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9z"/><path d="M16.5 9a4 4 0 0 1 0 6M19 6.5a8 8 0 0 1 0 11"/></symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 3 2.5 20h19z"/><path d="M12 10v4M12 17v.5"/></symbol>
+  </defs>
+</svg>
+
+<header class="appbar">
+  <div class="brand">
+    <span class="logo"><svg><use href="#i-leaf"/></svg></span>
+    <div>
+      <h1>Smart Greenhouse</h1>
+      <p>IAD591 · Arduino Uno → Raspberry Pi 3B+ → Flask</p>
+    </div>
+  </div>
+  <div class="appbar-right">
+    <span class="chip" id="modeChip">–</span>
+    <span class="chip link" id="link"><span class="dot"></span><span id="linkText">Đang kết nối…</span></span>
+    <span class="clock" id="ts">–</span>
+    <button class="iconbtn" id="voiceBtn" title="Bật/tắt cảnh báo bằng giọng nói" aria-label="Cảnh báo bằng giọng nói" aria-pressed="false"><svg><use href="#i-vol"/></svg></button>
+    <button class="iconbtn" id="themeBtn" title="Đổi giao diện sáng/tối" aria-label="Đổi giao diện sáng/tối"><svg><use href="#i-moon"/></svg></button>
+  </div>
+</header>
+
+<div class="alerts">
+  <div class="alert" id="alarmOffline" hidden><svg><use href="#i-alert"/></svg><div><b>Mất kết nối với Arduino.</b> Kiểm tra cáp USB và Bluetooth; số liệu bên dưới là lần nhận cuối.</div></div>
+  <div class="alert" id="alarmTank" hidden><svg><use href="#i-alert"/></svg><div><b>Bồn nước sắp cạn.</b> Bơm đã bị khoá, hãy châm thêm nước.</div></div>
+  <div class="alert" id="alarmHot" hidden><svg><use href="#i-alert"/></svg><div><b>Nhiệt độ vượt ngưỡng quá 5°C.</b> Kiểm tra nhà kính.</div></div>
+</div>
+
+<div class="layout">
+  <main>
+    <!-- Chỉ số hiện tại -->
+    <section class="kpis" aria-label="Chỉ số hiện tại">
+      <article class="kpi">
+        <div class="kpi-top"><span class="ico"><svg><use href="#i-temp"/></svg></span><span class="kpi-name">Nhiệt độ</span></div>
+        <div class="kpi-val"><span><span id="temp">–</span><small>°C</small></span><span class="badge" id="bTemp">–</span></div>
+        <div class="kpi-foot">Mở cửa gió từ <b id="tmax">–</b>°C</div>
+      </article>
+      <article class="kpi">
+        <div class="kpi-top"><span class="ico"><svg><use href="#i-drop"/></svg></span><span class="kpi-name">Độ ẩm không khí</span></div>
+        <div class="kpi-val"><span><span id="hum">–</span><small>%</small></span><span class="badge" id="bHum">–</span></div>
+        <div class="meter"><div class="fill" id="humFill"></div><i class="tick" style="left:85%"></i></div>
+        <div class="kpi-foot">Mở cửa gió từ <b>85</b>%</div>
+      </article>
+      <article class="kpi">
+        <div class="kpi-top"><span class="ico"><svg><use href="#i-soil"/></svg></span><span class="kpi-name">Độ ẩm đất</span></div>
+        <div class="kpi-val"><span><span id="soil">–</span><small>%</small></span><span class="badge" id="bSoil">–</span></div>
+        <div class="meter"><div class="fill" id="soilFill"></div><i class="tick" id="soilTick"></i></div>
+        <div class="kpi-foot">Tưới khi dưới <b id="soilMin">–</b>%</div>
+      </article>
+      <article class="kpi">
+        <div class="kpi-top"><span class="ico"><svg><use href="#i-sun"/></svg></span><span class="kpi-name">Ánh sáng</span></div>
+        <div class="kpi-val"><span><span id="light">–</span><small>%</small></span><span class="badge" id="bLight">–</span></div>
+        <div class="meter"><div class="fill" id="lightFill"></div><i class="tick" id="lightTick"></i></div>
+        <div class="kpi-foot">Bật đèn khi dưới <b id="lightMin">–</b>%</div>
+      </article>
+      <article class="kpi">
+        <div class="kpi-top"><span class="ico"><svg><use href="#i-tank"/></svg></span><span class="kpi-name">Mực nước bồn</span></div>
+        <div class="kpi-val"><span><span id="water">–</span><small>%</small></span><span class="badge" id="bWater">–</span></div>
+        <div class="meter"><div class="fill" id="waterFill"></div><i class="tick" style="left:15%"></i></div>
+        <div class="kpi-foot">Khoá bơm khi dưới <b>15</b>%</div>
+      </article>
+    </section>
+
+    <!-- Mô hình 3D trực tiếp -->
+    <section class="card" id="twinCard">
+      <div class="card-head">
+        <div><h2>Mô hình 3D trực tiếp</h2><p class="card-sub">Bấm vào luống cây để tưới 10 giây · bấm cửa mái, dãy đèn, trạm bơm để bật/tắt · kéo chuột để xoay</p></div>
+        <div class="row"><button class="btn" id="twinOut" aria-label="Thu nhỏ">−</button><button class="btn" id="twinIn" aria-label="Phóng to">+</button><button class="btn" id="twinMax">Toàn màn hình</button></div>
+      </div>
+      <div id="twin" class="twin"></div>
+    </section>
+
+    <!-- Biểu đồ -->
+    <section class="card">
+      <div class="card-head">
+        <div><h2>Diễn biến theo thời gian</h2><p class="card-sub">Đường đứt nét là ngưỡng điều khiển hiện tại</p></div>
+        <div class="seg small" id="segRange">
+          <button data-min="15" class="on">15 phút</button>
+          <button data-min="60">1 giờ</button>
+          <button data-min="360">6 giờ</button>
+          <button data-min="1440">24 giờ</button>
+        </div>
+      </div>
+      <div class="charts">
+        <figure><figcaption>Nhiệt độ <span>°C</span></figcaption><div class="plot"><canvas id="cTemp"></canvas></div></figure>
+        <figure><figcaption>Độ ẩm không khí <span>%</span></figcaption><div class="plot"><canvas id="cHum"></canvas></div></figure>
+        <figure><figcaption>Độ ẩm đất <span>%</span></figcaption><div class="plot"><canvas id="cSoil"></canvas></div></figure>
+        <figure><figcaption>Ánh sáng <span>%</span></figcaption><div class="plot"><canvas id="cLight"></canvas></div></figure>
+        <figure class="wide"><figcaption>Mực nước bồn <span>%</span></figcaption><div class="plot short"><canvas id="cWater"></canvas></div></figure>
+      </div>
+      <p class="empty" id="chartEmpty" hidden>Chưa có dữ liệu trong khoảng thời gian này.</p>
+    </section>
+
+    <!-- Lịch sử -->
+    <section class="card">
+      <div class="card-head">
+        <div><h2>Lịch sử</h2><p class="card-sub"><span id="rows">0</span> bản ghi trong SQLite</p></div>
+        <div class="row">
+          <div class="seg small" id="segTab">
+            <button data-tab="readings" class="on">Dữ liệu</button>
+            <button data-tab="events">Sự kiện</button>
+            <button data-tab="commands">Lệnh</button>
+          </div>
+          <a class="btn" href="/export.csv"><svg><use href="#i-down"/></svg>Tải CSV</a>
+        </div>
+      </div>
+      <div class="tablewrap"><table id="tbl"><thead></thead><tbody></tbody></table></div>
+    </section>
+  </main>
+
+  <aside>
+    <section class="card">
+      <h2>Chế độ</h2>
+      <div class="seg full" id="segMode">
+        <button data-cmd="MODE=AUTO">Tự động</button>
+        <button data-cmd="MODE=MANUAL">Thủ công</button>
+      </div>
+      <p class="note" id="modeNote">–</p>
+    </section>
+
+    <section class="card">
+      <h2>Thiết bị</h2>
+      <div class="device" id="devPump">
+        <span class="ico"><svg><use href="#i-drop"/></svg></span>
+        <div class="dev-text"><b>Bơm nước</b><span id="stPump">–</span></div>
+        <button class="switch" role="switch" aria-checked="false" aria-label="Bơm nước" data-on="PUMP=ON" data-off="PUMP=OFF"></button>
+      </div>
+      <div class="device" id="devVent">
+        <span class="ico"><svg><use href="#i-vent"/></svg></span>
+        <div class="dev-text"><b>Cửa thông gió</b><span id="stVent">–</span></div>
+        <button class="switch" role="switch" aria-checked="false" aria-label="Cửa thông gió" data-on="VENT=OPEN" data-off="VENT=CLOSE"></button>
+      </div>
+      <div class="device" id="devLamp">
+        <span class="ico"><svg><use href="#i-bulb"/></svg></span>
+        <div class="dev-text"><b>Đèn trồng cây</b><span id="stLamp">–</span></div>
+        <button class="switch" role="switch" aria-checked="false" aria-label="Đèn trồng cây" data-on="LAMP=ON" data-off="LAMP=OFF"></button>
+      </div>
+      <button class="btn full" id="waterBtn" data-cmd="WATER=10"><svg><use href="#i-drop"/></svg>Tưới ngay 10 giây</button>
+      <p class="note" id="waterNodeNote" hidden></p>
+      <p class="note">Hôm nay bơm đã chạy <b id="todayPump">0</b> lần. "Tưới ngay" không đổi chế độ.</p>
+    </section>
+
+    <section class="card">
+      <h2>Ngưỡng tự động</h2>
+      <label class="slider"><span>Nhiệt độ mở cửa gió <output id="oTmax">–</output></span>
+        <input type="range" id="inTmax" min="20" max="50" step="1" data-key="TMAX" data-unit="°C"></label>
+      <label class="slider"><span>Đất khô, bật bơm dưới <output id="oSoil">–</output></span>
+        <input type="range" id="inSoil" min="5" max="90" step="1" data-key="SOIL" data-unit="%"></label>
+      <label class="slider"><span>Trời tối, bật đèn dưới <output id="oLight">–</output></span>
+        <input type="range" id="inLight" min="5" max="90" step="1" data-key="LIGHT" data-unit="%"></label>
+      <p class="note">Kéo rồi thả để gửi. Ngưỡng được lưu trong Arduino.</p>
+    </section>
+
+    <section class="card">
+      <h2>Kết nối</h2>
+      <div id="linkList" class="links"></div>
+      <button class="btn full" id="beepBtn" data-cmd="BEEP"><svg><use href="#i-bell"/></svg>Bíp thử còi</button>
+    </section>
+  </aside>
+</div>
+
+<div class="toasts" id="toasts" role="status" aria-live="polite"></div>
+
+<script src="{{ url_for('static', filename='chart.umd.min.js') }}"></script>
+<script src="{{ url_for('static', filename='app.js') }}"></script>
+<script src="{{ url_for('static', filename='three.min.js') }}"></script>
+<script src="{{ url_for('static', filename='twin.js') }}"></script>
+</body>
+</html>
